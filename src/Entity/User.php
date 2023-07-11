@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -79,7 +79,7 @@ class User implements UserInterface
         $this->email = $email;
     }
 
-    public function getRoles()
+    public function getRoles(): array
     {
         return array('ROLE_USER');
     }
@@ -87,4 +87,10 @@ class User implements UserInterface
     public function eraseCredentials()
     {
     }
+
+    public function getUserIdentifier(): string
+{
+    return $this->email;
+}
+
 }
